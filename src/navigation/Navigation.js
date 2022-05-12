@@ -5,6 +5,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import DetailsScreen from "../views/DetailsScreen";
 import SearchScreen from "../views/SearchScreen";
+import TeamScreen from "../views/TeamScreen";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -27,6 +28,14 @@ function SearchStack() {
   );
 }
 
+function TeamStack() {
+  return (
+    <Stack.Navigator initialRouteName="TeamScreen">
+      <Stack.Screen name="Team" component={TeamScreen} />
+    </Stack.Navigator>
+  );
+}
+
 export default function Navigation() {
   return (
     <NavigationContainer>
@@ -38,6 +47,7 @@ export default function Navigation() {
       >
         <Tab.Screen name="Home" component={PokemonStack} />
         <Tab.Screen name="Search" component={SearchStack} />
+        <Tab.Screen name="Team" component={TeamStack} />
       </Tab.Navigator>
     </NavigationContainer>
   );

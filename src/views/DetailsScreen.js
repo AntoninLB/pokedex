@@ -1,5 +1,13 @@
-import { View, Text, Image, SafeAreaView } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  SafeAreaView,
+  TouchableOpacity,
+} from "react-native";
 import styled from "styled-components";
+import React, { useState, useEffect } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function DetailsScreen({ route, navigation }) {
   const { data } = route.params;
@@ -11,6 +19,17 @@ export default function DetailsScreen({ route, navigation }) {
     return <Text key={index}>{item.ability.name}</Text>;
   });
 
+  const addTeam = async () => {
+    try {
+      const jsonValue = JSON.stringify(data);
+
+      await AsyncStorage.setItem("Team", jsonValue);
+      console.log("STORED");
+    } catch (e) {
+      console.log("ERREUR", e);
+    }
+  };
+
   return (
     <Container>
       <Header>
@@ -20,14 +39,32 @@ export default function DetailsScreen({ route, navigation }) {
         </PokemonNameContainer>
       </Header>
       {abilities}
+      <AddTeamButton onPress={addTeam}>
+        <Text>Ajouter à mon équipe</Text>
+      </AddTeamButton>
     </Container>
   );
 }
 
-const Container = styled(View)``;
+const Container = styled(View)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 const PokemonImage = styled(Image)`
   height: 100px;
   width: 100px;
+`;
+
+const AddTeamButton = styled(TouchableOpacity)`
+  border: 2px;
+  width: 300px;
+  height: 40px;
+  margin-top: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
 `;
 
 const Header = styled(View)`
