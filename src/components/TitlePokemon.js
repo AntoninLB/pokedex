@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { View, TouchableOpacity } from "react-native";
 import styled from "styled-components";
 
-export default function TitlePokemon({ name, url, navigation }) {
+export default function TitlePokemon({ name, url, navigation, image }) {
   const [pokemonData, setPokemonData] = useState();
   const [loadingPokemonData, setLoadingPokemonData] = useState(true);
 
@@ -31,9 +31,10 @@ export default function TitlePokemon({ name, url, navigation }) {
     <Container style={styles.container}>
       <TouchableOpacity onPress={onPokemonPress}>
         <Image
-          source={{ uri: pokemonData.sprites.front_default }}
+          source={{ uri: image ? image : pokemonData.sprites.front_default }}
           style={{ width: 100, height: 100 }}
         />
+
         <Label style={styles.text}>{name}</Label>
       </TouchableOpacity>
     </Container>
