@@ -33,12 +33,28 @@ export default function TeamScreen({ route, navigation }) {
     setIsLoaded(true);
   }, []);
 
+  const onRemovePress = async () => {
+    try {
+      await AsyncStorage.removeItem("Team");
+      setTeam(null);
+    } catch (e) {
+      // remove error
+    }
+
+    console.log("Done.");
+  };
+
   return (
     <MainContainer>
       <Title>Mon équipe</Title>
       <SeparatorComponent marginBottom={20} marginTop={20} />
       {isLoaded && team && (
-        <TitlePokemon name={team.name} image={team?.sprites?.front_default} />
+        <>
+          <TitlePokemon name={team.name} image={team?.sprites?.front_default} />
+          <TouchableOpacity onPress={onRemovePress}>
+            <Text style={{ color: "red" }}>REMOVE</Text>
+          </TouchableOpacity>
+        </>
       )}
     </MainContainer>
   );

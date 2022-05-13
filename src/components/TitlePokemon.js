@@ -31,7 +31,7 @@ export default function TitlePokemon({ name, url, navigation, image }) {
     <Container style={styles.container}>
       <MainButton onPress={onPokemonPress}>
         <Image
-          source={{ uri: image ? image : pokemonData.sprites.front_default }}
+          source={{ uri: image ? image : pokemonData?.sprites.front_default }}
           style={{ width: 100, height: 100 }}
         />
 

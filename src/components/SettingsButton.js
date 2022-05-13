@@ -2,10 +2,10 @@ import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import styled from "styled-components";
 import SeparatorComponent from "./SeparatorComponent";
 
-export default function SettingsButton({ title }) {
+export default function SettingsButton({ title, onPress }) {
   return (
     <Container>
-      <MainButton>
+      <MainButton onPress={onPress}>
         <Title>{title}</Title>
       </MainButton>
 
