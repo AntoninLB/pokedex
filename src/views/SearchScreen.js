@@ -43,7 +43,7 @@ export default function SearchScreen({ route, navigation }) {
           placeholder="Recherche un pokémon"
           placeholderTextColor={"grey"}
         />
-        <TouchableOpacity onPress={search}>
+        <TouchableOpacity style={{ marginBottom: 50 }} onPress={search}>
           <Text>Rechercher</Text>
         </TouchableOpacity>
 
@@ -55,8 +55,6 @@ export default function SearchScreen({ route, navigation }) {
             name={pokemons.name}
           />
         )}
-
-        {isSearch && <Text>etet</Text>}
       </MainContainer>
     </SafeAreaView>
   );

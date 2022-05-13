@@ -29,14 +29,14 @@ export default function TitlePokemon({ name, url, navigation, image }) {
 
   return (
     <Container style={styles.container}>
-      <TouchableOpacity onPress={onPokemonPress}>
+      <MainButton onPress={onPokemonPress}>
         <Image
           source={{ uri: image ? image : pokemonData.sprites.front_default }}
           style={{ width: 100, height: 100 }}
         />
 
         <Label style={styles.text}>{name}</Label>
-      </TouchableOpacity>
+      </MainButton>
     </Container>
   );
 }
@@ -55,7 +55,16 @@ const Label = styled(Text)`
 const Container = styled(View)`
   width: 45%;
   border: 1px;
+  /* box-shadow: 2px 2px 2px; */
+
   border-radius: 10px;
+  justify-content: center;
   align-items: center;
   margin-bottom: 10px;
+`;
+
+const MainButton = styled(TouchableOpacity)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

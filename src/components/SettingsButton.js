@@ -1,5 +1,6 @@
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import styled from "styled-components";
+import SeparatorComponent from "./SeparatorComponent";
 
 export default function SettingsButton({ title }) {
   return (
@@ -7,7 +8,8 @@ export default function SettingsButton({ title }) {
       <MainButton>
         <Title>{title}</Title>
       </MainButton>
-      <Separator></Separator>
+
+      <SeparatorComponent />
     </Container>
   );
 }
@@ -29,11 +31,4 @@ const MainButton = styled(TouchableOpacity)`
   justify-content: center;
   align-items: center;
   align-content: center;
-`;
-
-const Separator = styled(View)`
-  margin-top: 5px;
-  border: 1px;
-  opacity: 0.1;
-  width: 100%;
 `;

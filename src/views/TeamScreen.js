@@ -10,6 +10,7 @@ import {
 import styled from "styled-components";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import TitlePokemon from "../components/TitlePokemon";
+import SeparatorComponent from "../components/SeparatorComponent";
 
 export default function TeamScreen({ route, navigation }) {
   const [team, setTeam] = useState([]);
@@ -33,12 +34,22 @@ export default function TeamScreen({ route, navigation }) {
   }, []);
 
   return (
-    <SafeAreaView>
-      <Text>TEAM</Text>
-
+    <MainContainer>
+      <Title>Mon équipe</Title>
+      <SeparatorComponent marginBottom={20} marginTop={20} />
       {isLoaded && team && (
         <TitlePokemon name={team.name} image={team?.sprites?.front_default} />
       )}
-    </SafeAreaView>
+    </MainContainer>
   );
 }
+
+const MainContainer = styled(SafeAreaView)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Title = styled(Text)`
+  font-size: 28px;
+`;

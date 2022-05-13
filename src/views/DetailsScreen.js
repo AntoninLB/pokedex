@@ -8,6 +8,7 @@ import {
 import styled from "styled-components";
 import React, { useState, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import SeparatorComponent from "../components/SeparatorComponent";
 
 export default function DetailsScreen({ route, navigation }) {
   const { data } = route.params;
@@ -38,7 +39,11 @@ export default function DetailsScreen({ route, navigation }) {
           <PokemonName>{data.name}</PokemonName>
         </PokemonNameContainer>
       </Header>
-      {abilities}
+      <SeparatorComponent />
+      <AbilitiesContainer>
+        <AbilitiesTitle>Abilités</AbilitiesTitle>
+        {abilities}
+      </AbilitiesContainer>
       <AddTeamButton onPress={addTeam}>
         <Text>Ajouter à mon équipe</Text>
       </AddTeamButton>
@@ -56,6 +61,18 @@ const PokemonImage = styled(Image)`
   width: 100px;
 `;
 
+const AbilitiesTitle = styled(Text)`
+  font-size: 28px;
+  margin-bottom: 20px;
+`;
+
+const AbilitiesContainer = styled(View)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+`;
+
 const AddTeamButton = styled(TouchableOpacity)`
   border: 2px;
   width: 300px;
@@ -70,12 +87,14 @@ const AddTeamButton = styled(TouchableOpacity)`
 const Header = styled(View)`
   display: flex;
   justify-content: space-between;
+  width: 100%;
   flex-direction: row;
   align-items: center;
 `;
 
 const PokemonName = styled(Text)`
   font-size: 24px;
+  padding: 30px;
 `;
 
 const PokemonNameContainer = styled(View)`
